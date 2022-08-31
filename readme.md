@@ -1,7 +1,7 @@
 ## Notice
 
 Allowed for personal usage or other.
-**Give credits for usage! Without and credits I will stop releasing any projects like this.**
+**Give credits if using this! Without and credits I will stop releasing any projects like this.**
 
 ## Usages
 
@@ -32,6 +32,8 @@ Coming Soon
 ## Frontend
 
 * [x] Use public folder for html ( express-handlebars to be specific )
+* [x] GET /notif ( Show notification if backend is having errors )
+* [x] GET /users for frontend
 * [x] GET /login ( POST Request /login )
 * [ ] POST /login ( Send /login POST to backend NOT HTML JS )
 * [ ] GET /register ( POST Request /register )

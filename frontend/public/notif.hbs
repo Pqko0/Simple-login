@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Notification System</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet">
+
+
+        <style>
+            html {
+                background-color: rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+
+            div {
+                display: inline-block;
+                background-color: rgba(0, 0, 0, 0.1);
+                margin: 30px auto;
+                border-radius: 5px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                width: 500px ;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="notif" class="notification"></div>
+    </body>
+
+    <script>
+        const query = window.location.search;
+        const params = new URLSearchParams(query);
+
+        const notif = document.getElementById("notif")
+
+        if(params.get('message') == null) {
+            notif.textContent = "Unknown message"
+        } else {
+            notif.textContent = params.get('message')
+        }
+    </script>
+</html>

@@ -2,8 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const app = express();
 const exphbs = require('express-handlebars')
-const path = require('path')
-const APIURL = process.env.API_URL
+const axios = require('axios').default;
+const APIURL = "http://" + process.env.API_URL
 
 app.listen(5757 || process.env.port, () => {
     console.log("Express is online!")
@@ -18,11 +18,21 @@ app.engine('.hbs', exphbs.engine({ defaultLayout: false, extname: '.hbs' }));
 
 app.set('view engine', '.hbs');
 
+app.get('/notif', (req, res, next) => {
+    res.render('notif')
+})
+
+app.get('/users', (req, res, next) => {
+    axios.get(APIURL + "/users").then((r) => {
+        res.send(r.data);
+    })
+})
+
 app.get('/login', (req, res, next) => {
     res.render('login')
 })
 
-app.post('/login', (req, res, next) =>{ 
+app.post('/login', async(req, res, next) =>{ 
     
 })
 

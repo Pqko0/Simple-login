@@ -34,6 +34,8 @@ app.get('/users', async (req, res, next) => {
     const userList = await JSON.parse(JSON.stringify(await users.find()));
 
     for(let i = 0; i < userList.length;i++) {
+        delete userList[i]._id;
+        delete userList[i].__v;
         delete userList[i].password;
         if(process.env.EMAIL == "FALSE") {
             delete userList[i].email;
