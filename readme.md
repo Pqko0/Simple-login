@@ -14,7 +14,8 @@ Coming Soon
 ## Obfectives
 
 * [x] Use .env file
-* [ ] Use js-sha256 to encrypt password to database
+* [x] Enable/Disable Emails in GET /users ( .env )
+* [x] Use js-sha256 to encrypt password to database
 * [ ] Make user IDs for each user
 * [ ] Make a email verification system
 * [ ] Make a anti-swear word system
@@ -29,9 +30,8 @@ Coming Soon
 
 ## Frontend
 
-* [ ] Use public folder for html ( express-handlebars to be specific )
-* [ ] Use views folder for assets ( css, imgs, etc )
-* [ ] GET /login ( POST Request /login )
+* [x] Use public folder for html ( express-handlebars to be specific )
+* [x] GET /login ( POST Request /login )
 * [ ] POST /login ( Send /login POST to backend NOT HTML JS )
 * [ ] GET /register ( POST Request /register )
 * [ ] POST /register ( Make /register POST Request to backend NOT HTML JS )

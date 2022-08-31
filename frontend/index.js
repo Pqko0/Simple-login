@@ -22,6 +22,10 @@ app.get('/login', (req, res, next) => {
     res.render('login')
 })
 
+app.post('/login', (req, res, next) =>{ 
+    
+})
+
 app.use((err, req, res, next) => {
     if(err) {
         if(process.env.PRODUCTION == "ON") {
