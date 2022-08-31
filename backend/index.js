@@ -39,7 +39,30 @@ app.get('/users', async (req, res, next) => {
             delete userList[i].email;
         }
     }
-    
 
     res.send(userList)
+})
+
+app.post('/login', async(req, res, next) => {
+    const bodySent = req.body;
+    if(!bodySent.username || !bodySent.password) return res.send({
+        url: "?error=true"
+    })
+
+    users.findOne({
+        username: bodySent.username,
+        password: await encrypt(bodySent.password)
+    }, function(err, usr) {
+        if(err) return res.send({
+            url: '/notif?message="Database error occured!"'
+        })
+        if(!usr) return res.send({
+            url: "?error=true"
+        })
+
+        res.send({
+            data: usr,
+            url: "/dashboard"
+        })
+    })
 })

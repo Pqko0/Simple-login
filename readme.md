@@ -40,19 +40,16 @@ Coming Soon
 
 ## Backend
 
-* [ ] GET /users
-* [ ] Return all signed up users ( Check backend .env to turn emails in api )
-
-* [ ] POST /login
-* [ ] Use js-sha256 hmac 
-* [ ] Send back
-
+* [x] GET /users
+* [x] Return all signed up users ( Check backend .env to turn emails in api )
+* [x] POST /login
+* [x] Use js-sha256 hmac 
+* [x] Send back
 * [ ] POST /register
 * [ ] Basic check
 * [ ] Anti Swear-Word Check
 * [ ] Hash using HMAC SHA256
 * [ ] Save to mongoose
-
 * [ ] POST /reset
 * [ ] Check if user exists
 * [ ] Send email to user
