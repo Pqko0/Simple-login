@@ -1,6 +1,7 @@
 ## Notice
 
 Allowed for personal usage or other.
+**Give credits for usage! Without and credits I will stop releasing any projects like this.**
 
 ## Usages
 
@@ -44,7 +45,7 @@ Coming Soon
 * [x] Return all signed up users ( Check backend .env to turn emails in api )
 * [x] POST /login
 * [x] Use js-sha256 hmac 
-* [x] Send back
+* [x] Send data back
 * [ ] POST /register
 * [ ] Basic check
 * [ ] Anti Swear-Word Check
