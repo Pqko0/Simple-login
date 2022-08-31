@@ -1,3 +1,8 @@
+## Usage
+
+* [ ] External app usage ( Javascript Apps, Etc auth apps )
+* [ ] Dashboard ( Not supported YET )
+
 ## Obfectives
 
 * [ ] Use js-sha256 to encrypt password to database
