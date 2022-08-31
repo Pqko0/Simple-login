@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<body>
+    <head>
+        <title>OfficialKimz/Simple-login</title>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet">
+        <style>
+            body  {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+            form {
+                margin-top: 20px;
+                border-radius: 10px;
+                width: 15%;
+                display: inline-block;
+                background-color: rgba(0, 0, 0, 0.1);
+                text-align: center;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            .error {
+                background-color: rgb(230, 0, 0);
+                border-radius: 5px;
+                border: 1px solid rgb(255, 0, 0);
+                font-size: 15px;
+                color: black;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style="text-align: center;">
+            <form class="login">
+                <div class="error" id="error">Incorrect username or password!</div>
+                <label style="font-size: 30px;">Login</label>
+                <label>Username:</label>
+                <input type="text" id="username" name="username">
+                <label>Password:</label>
+                <input type="password" id="password" name="password">
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        var element=document.getElementById('error');
+
+        element.style.display = 'none';
+        if(urlParams.get('error') == "true") {
+            element.style.display = '';
+        }
+
+        const loginForm = document.querySelector(".login")
+
+        loginForm.addEventListener('submit', async (submit) => {
+            submit.preventDefault();
+
+            const formData= new FormData(loginForm)
+        
+            const {username, password} = {
+                username: formData.get('username'),
+                password: formData.get('password')
+            }
+        
+            // POST request to backend
+        })
+    </script>
+</body>
