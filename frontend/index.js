@@ -33,15 +33,23 @@ app.get('/login', (req, res, next) => {
 })
 
 app.post('/login', async(req, res, next) =>{ 
-    
+    axios.post(APIURL, {
+        REQ_BODY: req.body
+    }).then((r) => {
+
+    }).catch((err) => {
+
+    })
 })
 
 app.use((err, req, res, next) => {
     if(err) {
         if(process.env.PRODUCTION == "ON") {
-            return res.send({
-                message: "An error has occured!",
-                err_msg: err.message
+            console.log("An error has occured at " + new Date())
+            console.log(err.message)
+            console.log(err.stack)
+            return res.render('error', {
+                err: "An error has occured! Please message a developer to thsi web development for more info!"
             })
         } else {
             return res.send({
