@@ -81,13 +81,13 @@
         
             // POST request to frontend
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/login", true);
+            xhr.open("POST", "http://localhost:5757/login", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(JSON.stringify({
                 data: form
             }));
 
-            xhr.onload = () => {
+            xhr.onload = async() => {
                 document.location = JSON.parse(xhr.responseText).url
             }
         })

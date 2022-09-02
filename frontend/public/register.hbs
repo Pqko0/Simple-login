@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+    
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet">
+        <style>
+            body {
+                margin: 20px auto;
+                text-align: center;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+            .reg {
+                background-color: rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                border: 2px outset rgba(0, 0, 0, 0.1);
+                text-align: center;
+                position: relative;
+                display: inline-block;
+                width: 20%;
+                overflow: hidden;
+}
+
+            .error {
+                background-color: rgb(244, 0, 0);
+                border-radius: 5px;
+                border: 1px solid rgb(255, 0, 0);
+                margin: 5px;
+                width: 80%;
+                display: inline-block;
+}
+        </style>
+    </head>
+
+    <body>
+        <regForm style="text-align: center;">
+            <form name="reg" class="reg">
+                <label id="error" class="error">Loading...</label>
+                <label style="font-size: 30px;">Register Form</label>
+
+
+                <label>Username:</label>
+                <input type="text" name="username" id="username">
+
+                <label>Email:</label>
+                <input type="text" name="email" id="email"> 
+
+                <label>Password:</label>
+                <input type="password" name="password" id="password">
+
+                <label>Confirm Password:</label>
+                <input type="password" name="cpassword" id="cpassword">
+
+                <br>
+                <input type="submit" value="Register" class="submit">
+            </form>
+        </regForm>
+    </body>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        var element=document.getElementById('error');
+
+        element.style.display = 'none';
+        if(urlParams.get('error') == "true") {
+            element.style.display = '';
+            element.textContent = urlParams.get('message') || "Unknown error!"
+        }
+
+        const registerForm = document.querySelector(".reg")
+
+        registerForm.addEventListener('submit', async (submit) => {
+            submit.preventDefault();
+            
+            const formData= new FormData(registerForm)
+
+            const {username, email, password, cpassword} = {
+                username: formData.get('username'),
+                email: formData.get('email'),
+                password: formData.get('password'),
+                cpassword: formData.get('cpassword')
+            }
+
+            if(!username || !email || !password || !cpassword) return window.location.href = "?error=true&message=Missing data";
+
+            if(username.length < 3) return window.location.href = "?error=true&message=Username must be bigger than 3 letters";
+
+            if(email.length < 5 || !email.includes("@") || !email.includes(".")) return window.location.href = "?error=true&message=Invalid Email";
+
+            if(password.length < 8 ) window.location.href = "?error=true&message=Password must be bigger than 8 letters!";
+
+            if(password !== cpassword) window.location.href = "?error=true&message=Passwords don't match!"
+
+            const form =  {
+                username: username,
+                email: email,
+                password: password,
+                cpassword: cpassword
+            }
+
+            // POST request to frontend
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://localhost:5757/register", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify({
+                data: form
+            }));
+
+            xhr.onload = async() => {
+                document.location = JSON.parse(xhr.responseText).url
+            }
+        })
+    </script>
+
+</html>
